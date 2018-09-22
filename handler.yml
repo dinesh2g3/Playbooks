@@ -1,0 +1,16 @@
+---
+- hosts: all
+  vars_prompt:
+  - name: package
+    prompt: Enter the name of the package
+  tasks:
+  - name: Install "{{ package }}" server
+    yum:
+      name: "{{ package }}"
+      state: installed
+    notify: Restart "{{ package }}" service
+  handlers:
+  - name: Restart "{{ package }}" service
+    service:
+      name: "{{ package }}"
+      state: restarted

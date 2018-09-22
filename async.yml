@@ -1,0 +1,15 @@
+---
+- hosts: all
+  tasks:
+  - name: Install Apache
+    yum:
+      name: git
+      state: installed
+    async: 150
+    poll: 5
+    notify: restart httpd
+  handlers:
+  - name: restart httpd
+    service:
+      name: httpd
+      state: restarted

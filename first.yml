@@ -1,0 +1,10 @@
+---
+- hosts: all
+  vars:
+  - pkgName: httpd
+  - service: present
+  tasks:
+  - name: Installing "{{ pkgName }}" service
+    yum:
+      name: "{{ pkgName }}"
+      state: "{{ service }}" 

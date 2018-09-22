@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+  - name: first name
+    raw: echo "Dinesh" > /tmp/LOG
+    tags:
+    - firstname
+  - name: second name
+    raw: echo "S" >> /tmp/LOG
+    tags:
+    - secondname

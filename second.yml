@@ -1,0 +1,13 @@
+---
+- hosts: all
+  vars_files:
+  - vars.yml
+  tasks: 
+  - name: Install "{{ package }}" server
+    yum:
+      name: "{{ package }}"
+      state: present
+  - name: start "{{ package }}" service
+    service:
+      name: "{{ package }}"
+      state: started
